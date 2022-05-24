@@ -9,6 +9,6 @@ npm run start
 ## Deployment
 
 ```sh
-npm install
-npm run build
+make sync
+make deploy
 ```
