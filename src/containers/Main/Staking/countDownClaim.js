@@ -28,12 +28,22 @@ const STimeText = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+<<<<<<< HEAD
 const SItemTime = styled.div``;
+=======
+const SItemTime = styled.div`
+  color: #0b0f23;
+`;
+>>>>>>> feature/staking
 const abortController = new AbortController();
 
 // eslint-disable-next-line react/prop-types
 function CountDownClaim({ times, address }) {
   const [expiryTime, setExpiryTime] = useState(times);
+<<<<<<< HEAD
+=======
+  const [loadding, setIsLoading] = useState(true);
+>>>>>>> feature/staking
   const [countdownTime, setCountdownTime] = useState({
     countdownDays: '',
     countdownHours: '',
@@ -42,7 +52,10 @@ function CountDownClaim({ times, address }) {
   });
 
   const countdownTimer = () => {
+<<<<<<< HEAD
     // 18 may 2022 15:30:25
+=======
+>>>>>>> feature/staking
     if (!address) {
       setCountdownTime({
         countdownDays: '',
@@ -52,6 +65,10 @@ function CountDownClaim({ times, address }) {
       });
     }
     const timeInterval = setInterval(() => {
+<<<<<<< HEAD
+=======
+      setIsLoading(true);
+>>>>>>> feature/staking
       const countdownDateTime = new Date(expiryTime).getTime();
       const currentTime = new Date().getTime();
       const remainingDayTime = countdownDateTime - currentTime;
@@ -70,7 +87,11 @@ function CountDownClaim({ times, address }) {
         countdownSeconds: totalSeconds ?? ''
       };
       setCountdownTime(runningCountdownTime);
+<<<<<<< HEAD
 
+=======
+      setIsLoading(false);
+>>>>>>> feature/staking
       if (remainingDayTime <= 0) {
         clearInterval(timeInterval);
         setExpiryTime(false);
@@ -104,12 +125,31 @@ function CountDownClaim({ times, address }) {
                   <SItemTime>{countdownTime.countdownMinutes}</SItemTime>
                   <SItemTime>{countdownTime.countdownSeconds} </SItemTime>
                 </STimeNumer>
+<<<<<<< HEAD
                 <STimeText>
                   <SItemTime>DAYS</SItemTime>
                   <SItemTime>HOURS</SItemTime>
                   <SItemTime>MIN</SItemTime>
                   <SItemTime>SEC</SItemTime>
                 </STimeText>
+=======
+                {!loadding && (
+                  <STimeText>
+                    {countdownTime.countdownDays != null && (
+                      <SItemTime>DAYS</SItemTime>
+                    )}
+                    {countdownTime.countdownHours != null && (
+                      <SItemTime>HOURS</SItemTime>
+                    )}
+                    {countdownTime.countdownMinutes != null && (
+                      <SItemTime>MIN</SItemTime>
+                    )}
+                    {countdownTime.countdownSeconds != null && (
+                      <SItemTime>SEC</SItemTime>
+                    )}
+                  </STimeText>
+                )}
+>>>>>>> feature/staking
               </STimeClaim>
             )}
           </SBtnClaim>

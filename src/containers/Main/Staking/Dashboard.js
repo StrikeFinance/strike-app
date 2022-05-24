@@ -8,11 +8,18 @@ import { Row, Col } from 'antd';
 import styled from 'styled-components';
 import LogoFlash from '../../../assets/img/logo_flash.svg';
 import LogoLP from '../../../assets/img/logo_lp.svg';
+<<<<<<< HEAD
+=======
+import IconFlashSmall from '../../../assets/img/flash_small.svg';
+>>>>>>> feature/staking
 
 const SMain = styled.div`
   width: 100%;
   padding: 15px;
+<<<<<<< HEAD
   margin-top: 10px;
+=======
+>>>>>>> feature/staking
   border-radius: 8px;
   box-sizing: content-box;
 `;
@@ -40,6 +47,10 @@ const SText = styled.p`
   color: #107def;
   font-size: 18px;
   line-height: 28px;
+<<<<<<< HEAD
+=======
+  font-weight: 900;
+>>>>>>> feature/staking
 `;
 const SBox = styled.div`
   width: 100%;
@@ -54,18 +65,33 @@ const STextBox = styled.div`
   font-size: 14px;
   line-height: 22px;
   color: #9d9fa7;
+<<<<<<< HEAD
+=======
+  text-align: right;
+>>>>>>> feature/staking
 `;
 const SValueBox = styled.div`
   color: #0b0f23;
   font-size: 20px;
   line-height: 27px;
+<<<<<<< HEAD
   font-weight: 700;
+=======
+  font-weight: 900;
+>>>>>>> feature/staking
 `;
 const SUSDBox = styled.div`
   color: #107def;
   font-size: 14px;
   line-height: 22px;
+<<<<<<< HEAD
   font-weight: 700;
+=======
+  font-weight: 900;
+`;
+const SIconFlash = styled.img`
+  margin-right: 10px;
+>>>>>>> feature/staking
 `;
 function DashboardStaking({ address, amount, totalBoost, totalDeposit }) {
   const [countAmount, setCountAmount] = useState(null);
@@ -121,7 +147,14 @@ function DashboardStaking({ address, amount, totalBoost, totalDeposit }) {
                     <>
                       {totalDeposit ? (
                         <>
+<<<<<<< HEAD
                           <SValueBox>{totalDeposit}</SValueBox>
+=======
+                          <SValueBox>
+                            <SIconFlash src={IconFlashSmall} />
+                            {totalDeposit}
+                          </SValueBox>
+>>>>>>> feature/staking
                         </>
                       ) : (
                         <SValueBox>-</SValueBox>
