@@ -435,16 +435,18 @@ function Sidebar({ history, settings, setSetting, getGovernanceStrike }) {
       if (item.id !== 'eth' && item.id !== 'strk') {
         const validNetwork = await checkIsValidNetwork(instance);
         if (validNetwork) {
-          const tokenContract = getTokenContract(instance, item.id);
-          const tokenDecimals = await methods.call(
-            tokenContract.methods.decimals,
-            []
-          );
-          const sBepContract = getSbepContract(instance, item.id);
-          const stokenDecimals = await methods.call(
-            sBepContract.methods.decimals,
-            []
-          );
+          // const tokenContract = getTokenContract(instance, item.id);
+          // const tokenDecimals = await methods.call(
+          //   tokenContract.methods.decimals,
+          //   []
+          // );
+          const tokenDecimals = item.decimals;
+          // const sBepContract = getSbepContract(instance, item.id);
+          // const stokenDecimals = await methods.call(
+          //   sBepContract.methods.decimals,
+          //   []
+          // );
+          const stokenDecimals = 8;
           decimals[`${item.id}`].token = Number(tokenDecimals);
           decimals[`${item.id}`].stoken = Number(stokenDecimals);
           decimals[`${item.id}`].price = 18 + 18 - Number(tokenDecimals);
@@ -459,8 +461,8 @@ function Sidebar({ history, settings, setSetting, getGovernanceStrike }) {
         decimals[`${item.id}`].price = 18;
       }
     });
-    decimals.mantissa = +process.env.REACT_APP_MANTISSA_DECIMALS;
-    decimals.comptroller = +process.env.REACT_APP_COMPTROLLER_DECIMALS;
+    decimals.mantissa = 18;
+    decimals.comptroller = 18;
     await setSetting({ decimals });
   };
 
@@ -1155,11 +1157,13 @@ function Sidebar({ history, settings, setSetting, getGovernanceStrike }) {
           <ConnectButton />
         </div>
       </MainMenu>
-      <UserInfoModal
-        visible={isOpenInfoModal}
-        onCancel={() => setIsOpenInfoModal(false)}
-        available={available}
-      />
+      {isOpenInfoModal && (
+        <UserInfoModal
+          visible={isOpenInfoModal}
+          onCancel={() => setIsOpenInfoModal(false)}
+          available={available}
+        />
+      )}
     </SidebarWrapper>
   );
 }

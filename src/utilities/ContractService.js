@@ -1,8 +1,15 @@
 import { useEffect } from 'react';
 import { Multicall } from 'ethereum-multicall';
 import { EthereumProvider } from '@walletconnect/ethereum-provider';
+import { getProvider as getBW3WProvider } from '@binance/w3w-ethereum-provider';
+import { log } from '@binance/w3w-utils';
 
 import * as constants from './constants';
+
+log.debug = () => {};
+
+// eslint-disable-next-line global-require
+window.Buffer = window.Buffer || require('buffer').Buffer;
 
 const TOKEN_ABI = {
   usdc: constants.CONTRACT_USDC_TOKEN_ABI,
@@ -53,12 +60,22 @@ const walletV2Provider = await EthereumProvider.init({
   showQrModal: true // requires @walletconnect/modal
 });
 
+const bw3wProvider = getBW3WProvider({
+  chainId: 1,
+  rpc: {
+    1: process.env.REACT_APP_MAIN_RPC
+  },
+  showQrCodeModal: true
+});
+
 export const getProvider = walletType => {
   let provider = null;
   if (walletType === 'wcv2') {
     provider = walletV2Provider;
   } else if (walletType === 'bitkeep' && window.bitkeep) {
     provider = window.bitkeep.ethereum;
+  } else if (walletType === 'bw3w') {
+    provider = bw3wProvider;
   } else if (typeof window.ethereum !== 'undefined') {
     if (window.ethereum.providers?.length) {
       window.ethereum.providers.forEach(async p => {
