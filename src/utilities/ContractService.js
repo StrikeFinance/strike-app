@@ -27,7 +27,8 @@ const TOKEN_ABI = {
   ust: constants.CONTRACT_UST_TOKEN_ABI,
   dai: constants.CONTRACT_DAI_TOKEN_ABI,
   xcn: constants.CONTRACT_XCN_TOKEN_ABI,
-  wsteth: constants.CONTRACT_WSTETH_TOKEN_ABI
+  wsteth: constants.CONTRACT_WSTETH_TOKEN_ABI,
+  reth: constants.CONTRACT_RETH_TOKEN_ABI
 };
 
 const call = (method, params) => {
@@ -50,7 +51,9 @@ const send = (web3, method, params, from) => {
       .then(async gasAmount => {
         const walletBalance = await web3.eth.getBalance(from);
         const gasPrice = await web3.eth.getGasPrice();
-        const estimatedGas = new BigNumber(gasPrice).times(gasAmount).times(2);
+        const estimatedGas = new BigNumber(gasPrice)
+          .times(gasAmount)
+          .times(1.5);
         if (estimatedGas.gt(new BigNumber(walletBalance))) {
           toast.error(
             'Your ETH balance is insufficient to execute the transaction.'
