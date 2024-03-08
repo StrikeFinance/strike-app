@@ -37,12 +37,20 @@ const DashboardWrapper = styled.div`
   }
 `;
 
+const RewardBannerWrapper = styled.div`
+  position: relative;
+  background: linear-gradient(to right, #3fd5c6, #3ea7fb);
+  padding: 2px;
+  border-radius: 10px;
+  margin: 10px 15px;
+`;
+
 const RewardBanner = styled.div`
   display: flex;
   justify-content: space-between;
   background: #1e1f25;
   color: white;
-  border-radius: 6px;
+  border-radius: 10px;
   margin: 10px 15px;
 
   .left {
@@ -146,6 +154,7 @@ function Dashboard({ setSetting }) {
       <DashboardWrapper className="flex">
         <Row>
           <Column xs="12">
+            {/* <RewardBannerWrapper> */}
             <RewardBanner>
               <div className="left">
                 <div className="title">
@@ -174,6 +183,7 @@ function Dashboard({ setSetting }) {
               </div>
               <img src={rewardBanner} alt="reward-banner" />
             </RewardBanner>
+            {/* </RewardBannerWrapper> */}
           </Column>
           <Column xs="12">
             <div className="divider" />
