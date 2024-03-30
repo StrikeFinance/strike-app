@@ -1714,7 +1714,7 @@ function Staking({ settings, setSetting, intl }) {
                       <FormattedMessage id="Claimable_Reward" />
                     </div>
                     <div className="value">
-                      ${numberFormat(claimableReward)}
+                      ${numberFormat.format(claimableReward)}
                     </div>
                   </div>
 
