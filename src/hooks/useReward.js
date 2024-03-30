@@ -66,7 +66,7 @@ export const useRewardData = (address, refresh) => {
   return {
     stakingPoint: stakingPoint.toFixed(2),
     estimatedReward: numberFormat.format(estimatedReward),
-    claimableReward: numberFormat.format(claimableReward),
+    claimableReward,
     totalReserveReward: numberFormat.format(totalReserve),
     reserveApy: reserveApy.toFixed(1),
     reservePrimeApy: reservePrimeApy.toFixed(1)

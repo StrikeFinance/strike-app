@@ -119,6 +119,7 @@ const AUDITOR_SETTING = {
 const abortController = new AbortController();
 // eslint-disable-next-line react/prop-types
 function Staking({ settings, setSetting, intl }) {
+  const numberFormat = Intl.NumberFormat('en-US');
   const instance = useInstance(settings.walletConnected);
   const provider = useProvider(settings.walletConnected);
   const address = settings.selectedAddress;
@@ -1712,7 +1713,9 @@ function Staking({ settings, setSetting, intl }) {
                     <div className="label">
                       <FormattedMessage id="Claimable_Reward" />
                     </div>
-                    <div className="value">${claimableReward}</div>
+                    <div className="value">
+                      ${numberFormat(claimableReward)}
+                    </div>
                   </div>
 
                   <ST.SPrimeRewardClaim
